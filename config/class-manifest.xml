@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 
 <componentPackage>
+	<component id="CabinEvent" class="com.collab.cabin.events.CabinEvent"/>
+	<component id="UIComponent" class="com.collab.cabin.core.UIComponent"/>
 </componentPackage>
