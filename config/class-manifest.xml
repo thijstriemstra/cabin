@@ -7,6 +7,11 @@
 	<component id="DrawingUtils" class="com.collab.cabin.display.util.DrawingUtils"/>
 	<component id="FlashScrollPane" class="com.collab.cabin.containers.scrollpane.FlashScrollPane"/>
 	<component id="Logger" class="com.collab.cabin.log.Logger"/>
+	<component id="Menu" class="com.collab.cabin.controls.Menu"/>
+	<component id="MenuBarItem" class="com.collab.cabin.controls.menu.MenuBarItem"/>
+	<component id="MenuDirection" class="com.collab.cabin.controls.menu.MenuDirection"/>
+	<component id="MenuItem" class="com.collab.cabin.controls.menu.MenuItem"/>
+	<component id="MenuItemClickEvent" class="com.collab.cabin.events.MenuItemClickEvent"/>
 	<component id="Panel" class="com.collab.cabin.containers.panels.Panel"/>
 	<component id="PathUtils" class="com.collab.cabin.util.PathUtils"/>
 	<component id="SkinUtils" class="com.collab.cabin.display.util.SkinUtils"/>
