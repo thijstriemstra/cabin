@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 
 <componentPackage>
+	<component id="AppContextMenu" class="com.collab.cabin.display.AppContextMenu"/>
 	<component id="CabinEvent" class="com.collab.cabin.events.CabinEvent"/>
+	<component id="ContentLoader" class="com.collab.cabin.display.util.ContentLoader"/>
+	<component id="DrawingUtils" class="com.collab.cabin.display.util.DrawingUtils"/>
+	<component id="Logger" class="com.collab.cabin.log.Logger"/>
+	<component id="SkinUtils" class="com.collab.cabin.display.util.SkinUtils"/>
+	<component id="StyleDict" class="com.collab.cabin.display.util.StyleDict"/>
+	<component id="TextUtils" class="com.collab.cabin.display.util.TextUtils"/>
 	<component id="UIComponent" class="com.collab.cabin.core.UIComponent"/>
 </componentPackage>
