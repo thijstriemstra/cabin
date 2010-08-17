@@ -6,8 +6,11 @@
 	<component id="ContentLoader" class="com.collab.cabin.display.util.ContentLoader"/>
 	<component id="DrawingUtils" class="com.collab.cabin.display.util.DrawingUtils"/>
 	<component id="Logger" class="com.collab.cabin.log.Logger"/>
+	<component id="PathUtils" class="com.collab.cabin.util.PathUtils"/>
 	<component id="SkinUtils" class="com.collab.cabin.display.util.SkinUtils"/>
+	<component id="StringUtil" class="com.collab.cabin.util.StringUtil"/>
 	<component id="StyleDict" class="com.collab.cabin.display.util.StyleDict"/>
 	<component id="TextUtils" class="com.collab.cabin.display.util.TextUtils"/>
 	<component id="UIComponent" class="com.collab.cabin.core.UIComponent"/>
+	<component id="URLUtils" class="com.collab.cabin.util.URLUtils"/>
 </componentPackage>
