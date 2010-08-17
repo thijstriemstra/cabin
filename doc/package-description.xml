@@ -12,5 +12,65 @@
                 ]]>
             </description>
         </package>
+        <package name="com.collab.cabin.core">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.core package contains the core classes that the Cabin framework uses to build visual displays.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.core package contains the core classes that the Cabin framework uses to build visual displays.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.display">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.display package contains display classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.display package contains display classes.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.display.util">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.display.util package contains the display utility classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.display.util package contains the display utility classes.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.events">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.events package contains the classes that define Cabin event objects.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.events package contains the classes that define Cabin event objects.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.util">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.util package contains various helper classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.util package contains various helper classes.
+                ]]>
+            </description>
+        </package>
     </packages>
 </overviews>
