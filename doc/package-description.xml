@@ -48,6 +48,42 @@
                 ]]>
             </description>
         </package>
+        <package name="com.collab.cabin.controls">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.controls package contains the Cabin user-interface controls.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.controls package contains the Cabin user-interface controls.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.controls.buttons">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.controls.buttons package contains the classes used by the button-based controls.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.controls.buttons package contains the classes used by the button-based controls.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.controls.menu">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.controls.menu package contains the classes used by the menu-based controls.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.controls.menu package contains the classes used by the menu-based controls.
+                ]]>
+            </description>
+        </package>
         <package name="com.collab.cabin.core">
             <shortDescription>
                 <![CDATA[
@@ -93,6 +129,30 @@
             <description>
                 <![CDATA[
                    The com.collab.cabin.events package contains the classes that define Cabin event objects.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.graphics">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.graphics package contains (animated) graphic classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.graphics package contains (animated) graphic classes.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.log">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.log package contains the logging classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.log package contains the logging classes.
                 ]]>
             </description>
         </package>
