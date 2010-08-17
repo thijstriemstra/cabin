@@ -12,6 +12,42 @@
                 ]]>
             </description>
         </package>
+        <package name="com.collab.cabin.containers">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.containers package contains the container classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.containers package contains the container classes.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.containers.panels">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.containers.panels package contains the panel classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.containers.panels package contains the panel classes.
+                ]]>
+            </description>
+        </package>
+        <package name="com.collab.cabin.containers.scrollpane">
+            <shortDescription>
+                <![CDATA[
+                   The com.collab.cabin.containers.scrollpane package contains the scrollpane classes.
+                ]]>
+            </shortDescription>
+            <description>
+                <![CDATA[
+                   The com.collab.cabin.containers.scrollpane package contains the scrollpane classes.
+                ]]>
+            </description>
+        </package>
         <package name="com.collab.cabin.core">
             <shortDescription>
                 <![CDATA[
