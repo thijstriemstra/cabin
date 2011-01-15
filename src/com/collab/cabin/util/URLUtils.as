@@ -1,7 +1,7 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabollabollab
+Copyright (C) 2010-2011 Collab
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -47,18 +47,18 @@ package com.collab.cabin.util
 		public static function createHyperlink( url:String ):String
 		{
 			// XXX: refactor
-			var url:String = "<FONT COLOR='#0000FF'><U><A HREF='%s' TARGET='_BLANK'>%s</A></U></FONT>";
+			var result:String = "<FONT COLOR='#0000FF'><U><A HREF='%s' TARGET='_BLANK'>%s</A></U></FONT>";
 			
 			if ( url.indexOf( HTTP ) > -1 )
 			{
-				url = StringUtil.replace( base, url, url );
+				result = StringUtil.replace( result, url, url );
 			}
 			else
 			{
-				url = StringUtil.replace( base, HTTP + url, url );
+				result = StringUtil.replace( result, HTTP + url, url );
 			}
 			
-			return url;
+			return result;
 		}
 		
 		/**
