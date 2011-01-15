@@ -28,6 +28,16 @@ package com.collab.cabin.util
 	 */	
 	public class URLUtils
 	{
+		// ====================================
+		// CONSTANTS
+		// ====================================
+		
+		public static const HTTP	 : String = "http://";
+		
+		// ====================================
+		// PUBLIC STATIC METHODS
+		// ====================================
+		
 		/**
 		 * Create HTML anchor for URL.
 		 *  
@@ -37,14 +47,18 @@ package com.collab.cabin.util
 		public static function createHyperlink( url:String ):String
 		{
 			// XXX: refactor
-			if ( url.indexOf( "http://" ) > -1 )
+			var url:String = "<FONT COLOR='#0000FF'><U><A HREF='%s' TARGET='_BLANK'>%s</A></U></FONT>";
+			
+			if ( url.indexOf( HTTP ) > -1 )
 			{
-				return "<FONT COLOR='#0000FF'><U><A HREF='" + url + "' TARGET='_BLANK'>"+ url + "</A></U></FONT>";
+				url = StringUtil.replace( base, url, url );
 			}
 			else
 			{
-				return "<FONT COLOR='#0000FF'><U><A HREF='http://" + url + "' TARGET='_BLANK'>"+ url + "</A></U></FONT>";
+				url = StringUtil.replace( base, HTTP + url, url );
 			}
+			
+			return url;
 		}
 		
 		/**
