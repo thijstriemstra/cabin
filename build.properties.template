@@ -5,6 +5,7 @@ asdoc.exe = ${FLEX_HOME}/bin/asdoc
 manifest.exe = ${basedir}/../GenerateManifest
 
 config.dir = config
+def.config = ${config.dir}/compiler-def.xml
 docs.config = ${config.dir}/doc-config.xml
 app.config = ${config.dir}/app-config.xml
 app.src = src
@@ -12,4 +13,5 @@ app.outputfolder = bin
 
 lib.version = 0.1a1
 lib.path = lib
+lib.config = ${config.dir}/lib-config.xml
 lib.manifest = ${config.dir}/class-manifest.xml

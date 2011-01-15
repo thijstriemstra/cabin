@@ -17,8 +17,9 @@
 	<target name="api-docs" description="Generate API documentation">
 		<exec executable="${asdoc.exe}" failonerror="true"
 			  dir="${app.src}">
-			<arg line="-load-config+='${basedir}/${docs.config}'"/>
-			<arg value="-load-config+=${basedir}/config/compiler-def.xml" />
+			<arg line="-load-config+='${basedir}/${app.config}'"/>
+			<arg value="-load-config+=${basedir}/${docs.config}" />
+			<arg value="-load-config+=${basedir}/${def.config}" />
 			<arg value="-external-library-path" />
 			<arg value="${basedir}/${lib.path}" />
 		</exec>
@@ -27,7 +28,8 @@
 	<target name="build-lib" description="Build SWC library">
 		<exec executable="${compc.exe}" failonerror="true">
 			<arg line="-load-config+='${basedir}/${app.config}'"/>
-            <arg value="-load-config+=${basedir}/config/compiler-def.xml" />
+			<arg value="-load-config+=${basedir}/${lib.config}" />
+			<arg value="-load-config+=${basedir}/${def.config}" />
 		</exec>
 	</target>
     

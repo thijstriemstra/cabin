@@ -1,5 +1,12 @@
+<!--
+Copyright (C) 2010-2011 Collab
+
+Flex configuration file for Documentation compiler settings.
+-->
 <flex-config>
-   
+   <!-- benchmark: output performance benchmark-->
+   <benchmark>true</benchmark>
+
    <!-- doc-sources: list of source file to include in the documentation.-->
    <doc-sources>
       <path-element>com</path-element>
