@@ -4,4 +4,4 @@ build.properties
 /.settings
 /bin
 /bin-debug
-/GenerateManifest
+/src/fl
