@@ -1,7 +1,9 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabee software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -40,6 +42,7 @@ package com.collab.cabin.display.util
 		
 		public static const RED1								: uint = 0xFF0000;
 		public static const BLUE1								: uint = 0x1C20FF;
+		public static const BLUE2								: uint = 0x0000FF;
 		public static const GREEN1								: uint = 0x2FFF1C;
 		public static const YELLOW1								: uint = 0xFFF71C;
 		public static const PURPLE1								: uint = 0x6511ED;

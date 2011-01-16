@@ -18,6 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.util
 {
+	import com.collab.cabin.display.util.StyleDict;
+	import com.collab.cabin.display.util.TextUtils;
+
 	/**
 	 * URL utilities.
 	 * 
@@ -42,12 +45,13 @@ package com.collab.cabin.util
 		 * Create HTML anchor for URL.
 		 *  
 		 * @param url
+		 * @param target
 		 * @return 
 		 */		
-		public static function createHyperlink( url:String ):String
+		public static function createHyperlink( url:String, target:String="_blank" ):String
 		{
 			// XXX: refactor
-			var result:String = "<FONT COLOR='#0000FF'><U><A HREF='%s' TARGET='_BLANK'>%s</A></U></FONT>";
+			var result:String = "<u><a href='%s' target='" + target + "'>%s</a></u>";
 			
 			if ( url.indexOf( HTTP ) > -1 )
 			{
@@ -58,7 +62,7 @@ package com.collab.cabin.util
 				result = StringUtil.replace( result, HTTP + url, url );
 			}
 			
-			return result;
+			return TextUtils.getHTMLFontString( StyleDict.BLUE2, result );
 		}
 		
 		/**

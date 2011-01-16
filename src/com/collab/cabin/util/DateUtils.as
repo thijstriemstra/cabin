@@ -1,7 +1,9 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabee software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -37,13 +39,13 @@ package com.collab.cabin.util
 		{
 			var my_date:Date = new Date();
 			var theTime:Array = [my_date.getHours(), my_date.getMinutes(), my_date.getSeconds()];
-			var v:int = 0;
+			var cnt:int = 0;
 			
-			for ( v; v<theTime.length; v++)
+			for ( cnt; cnt<theTime.length; cnt++)
 			{
-				if (theTime[v] < 10)
+				if (theTime[cnt] < 10)
 				{
-					theTime[v] = "0" + theTime[v];
+					theTime[cnt] = "0" + theTime[cnt];
 				}
 			}
 			

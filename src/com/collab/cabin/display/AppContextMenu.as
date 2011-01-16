@@ -1,7 +1,9 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabee software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -94,7 +96,8 @@ package com.collab.cabin.display
 		 */		
 		private function draw():void
 		{
-			var item1:ContextMenuItem = new ContextMenuItem( _title, true, true, true );
+			var item1:ContextMenuItem = new ContextMenuItem( _title, true,
+														     true, true );
 			_menu = new ContextMenu();
 			_menu.hideBuiltInItems();
 			_menu.customItems.push( item1 );

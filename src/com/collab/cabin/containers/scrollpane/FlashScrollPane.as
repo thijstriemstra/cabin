@@ -1,7 +1,9 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabee software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -126,13 +128,13 @@ package com.collab.cabin.containers.scrollpane
 		{
 			if ( child && source && source.contains( child ))
 			{
-				var d:int = 0;
+				var cnt:int = 0;
 				
-				for ( d; d<_children.length;d++)
+				for ( cnt; cnt<_children.length; cnt++ )
 				{
-					if ( _children[ d ] == child )
+					if ( _children[ cnt ] == child )
 					{
-						_children.splice( d, 1 );
+						_children.splice( cnt, 1 );
 					}
 				}
 				
@@ -171,8 +173,10 @@ package com.collab.cabin.containers.scrollpane
 		{
 			if ( _children && _children.length > 0 )
 			{
+				var child:*;
+				
 				// remove existing children
-				for each ( var child:* in _children )
+				for each ( child in _children )
 				{
 					remove( child );
 				}

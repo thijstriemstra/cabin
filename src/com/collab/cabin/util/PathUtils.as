@@ -1,7 +1,9 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabee software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -44,9 +46,10 @@ package com.collab.cabin.util
 		 */		
 		public static function join( ...parts:Array ):String
 		{
+			var part:String;
 			var validParts:Array = [];
 			
-			for each ( var part:String in parts )
+			for each ( part in parts )
 			{
 				if ( part.length > 0 && part != null )
 				{
@@ -65,16 +68,23 @@ package com.collab.cabin.util
 		 */		
 		public static function basename( path:String ):String
 		{
+			var result:String;
+			var parts:Array;
+			
 			try
 			{
-				var parts:Array = path.split( FORWARD_SLASH );
+				parts = path.split( FORWARD_SLASH );
+				if ( parts.length > 0 )
+				{
+					result = parts[ parts.length - 1 ];
+				}
 			}
 			catch ( e:TypeError )
 			{
-				return "?";
+				result = "?";
 			}
 			
-			return parts[ parts.length - 1 ];
+			return result;
 		}
 		
 	}

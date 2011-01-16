@@ -1,7 +1,9 @@
 ﻿/*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabfree software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -55,24 +57,25 @@ package com.collab.cabin.util
 		 */		
 		public static function replace( key:String, ...params:Array ):String
 		{
-			var ret:String = "";
+			var result:String = "";
 			var sub:Array = params.slice();
+			var cnt:int = 0;
 			
-			for ( var d:int=0; d<key.length; d++ )
+			for ( cnt; cnt<key.length; cnt++ )
 			{
-				if ( key.substr( d, 2 ) == DELIMITER )
+				if ( key.substr( cnt, 2 ) == DELIMITER )
 				{
-					ret += sub[ 0 ];
+					result += sub[ 0 ];
 					sub.shift();
-					d++;
+					cnt++;
 				}
 				else
 				{
-					ret += key.charAt( d );
+					result += key.charAt( cnt );
 				}
 			}
 			
-			return ret;
+			return result;
 		}
 		
 	}	

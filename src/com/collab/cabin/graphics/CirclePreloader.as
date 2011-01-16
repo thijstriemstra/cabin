@@ -1,7 +1,9 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collabee software: you can redistribute it and/or modify
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
@@ -64,6 +66,7 @@ package com.collab.cabin.graphics
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
 			addEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
+			
 			timer = new Timer(65);
 			timer.addEventListener(TimerEvent.TIMER, onTimer, false, 0, true);
 			timer.start();
@@ -73,6 +76,7 @@ package com.collab.cabin.graphics
 		{
 			removeEventListener(Event.REMOVED_FROM_STAGE, onRemovedFromStage);
 			addEventListener(Event.ADDED_TO_STAGE, onAddedToStage);
+			
 			timer.reset();
 			timer.removeEventListener(TimerEvent.TIMER, onTimer);
 			timer = null;
@@ -91,14 +95,18 @@ package com.collab.cabin.graphics
 		{
 			var i:int = slices;
 			var degrees:int = 360 / slices;
+			var slice:Shape;
+			var radianAngle:Number;
+			
 			while (i--)
 			{
-				var slice:Shape = getSlice();
+				slice = getSlice();
 				slice.alpha = Math.max(0.2, 1 - (0.1 * i));
-				var radianAngle:Number = (degrees * i) * Math.PI / 180;
+				radianAngle = (degrees * i) * Math.PI / 180;
 				slice.rotation = -degrees * i;
 				slice.x = Math.sin(radianAngle) * radius;
 				slice.y = Math.cos(radianAngle) * radius;
+				
 				addChild(slice);
 			}
 		}
@@ -109,6 +117,7 @@ package com.collab.cabin.graphics
 			slice.graphics.beginFill(0x666666);
 			slice.graphics.drawRoundRect(-1, 0, 2, 6, 12, 12);
 			slice.graphics.endFill();
+			
 			return slice;
 		}
 		
