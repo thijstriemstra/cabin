@@ -34,11 +34,20 @@ package com.collab.cabin.util
 		
 		/**
 		 * Create a timestamp for the current date, eg. '23:01:40'.
+		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var now:String = DateUtils.createClientStamp();
+		 * trace( now ); // 09:23:38</listing>
+		 * 
+		 * @return
 		 */
 		public static function createClientStamp():String
 		{
 			var my_date:Date = new Date();
-			var theTime:Array = [my_date.getHours(), my_date.getMinutes(), my_date.getSeconds()];
+			var theTime:Array = [my_date.getHours(), my_date.getMinutes(),
+								 my_date.getSeconds()];
 			var cnt:int = 0;
 			
 			for ( cnt; cnt<theTime.length; cnt++)
@@ -49,7 +58,8 @@ package com.collab.cabin.util
 				}
 			}
 			
-			return theTime[ 0 ] + ":" + theTime[ 1 ] + ":" + theTime[ 2 ];
+			return StringUtil.replace( "%s:%s:%s", theTime[ 0 ], theTime[ 1 ],
+				                       theTime[ 2 ]);
 		}
 		
 	}

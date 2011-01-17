@@ -60,12 +60,19 @@ package com.collab.cabin.util
 			var result:String = "";
 			var sub:Array = params.slice();
 			var cnt:int = 0;
+			var str:String;
 			
 			for ( cnt; cnt<key.length; cnt++ )
 			{
 				if ( key.substr( cnt, 2 ) == DELIMITER )
 				{
-					result += sub[ 0 ];
+					str = sub[ 0 ];
+					
+					if ( str == null )
+					{
+						str = "";
+					}
+					result += str;
 					sub.shift();
 					cnt++;
 				}

@@ -16,17 +16,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.collab.cabin
+package com.collab.cabin.util
 {
-	import com.collab.cabin.util.*;
-
-	[Suite]
-	[RunWith("org.flexunit.runners.Suite")]
-	public class UtilSuite
-	{
-		public var t1	: DateUtilsTestCase;
-		public var t2   : PathUtilsTestCase;
-		public var t3   : StringUtilTestCase;
-		public var t4	: URLUtilsTestCase;
+	import org.hamcrest.assertThat;
+	import org.hamcrest.object.equalTo;
+	import org.hamcrest.text.endsWith;
+	
+	public class PathUtilsTestCase
+	{		
+		[Test]
+		public function testBasename():void
+		{
+			var pathA:String = PathUtils.basename( "abc/foo.bar" );
+			var pathB:String = PathUtils.basename( "abc//foo.bar" );
+			
+			assertThat( pathA, endsWith( 'foo.bar' ));
+			assertThat( pathB, endsWith( 'foo.bar' ));
+		}
+		
+		[Test]
+		public function testJoin():void
+		{
+			var filename:String = PathUtils.join( "images", "nature", "flower.png" );
+			assertThat( filename, equalTo( "images/nature/flower.png" ));
+		}
+		
 	}
 }

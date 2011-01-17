@@ -43,23 +43,40 @@ package com.collab.cabin.util
 		
 		/**
 		 * Create HTML anchor for URL.
-		 *  
-		 * @param url
-		 * @param target
-		 * @return 
+		 * 
+		 * @example The following code demonstrates this method:
+		 * 
+		 * <listing version="3.0">
+		 * var url:String = "http://google.com";
+		 * var hyperlink:String = URLUtils.createHyperlink( link );
+		 * trace( hyperlink ); // <font color='#ff'><u><a href='http://google.com'>http://google.com</a></u></font></listing>
+		 * 
+		 * @param url Anchor URL.
+		 * @param name Name for the anchor. Use null to use the value of <code>url</code> (default).
+		 * @param target For example '_blank'. Use null to ignore (default).
+		 * @return Underlined colored link in HTML markup.
 		 */		
-		public static function createHyperlink( url:String, target:String="_blank" ):String
+		public static function createHyperlink( url:String, name:String=null, target:String=null ):String
 		{
-			// XXX: refactor
-			var result:String = "<u><a href='%s' target='" + target + "'>%s</a></u>";
+			var result:String = "<u><a href='%s'>%s</a></u>";
+			
+			if ( name == null )
+			{
+				name = url;
+			}
+			
+			if ( target != null )
+			{
+				result = "<u><a href='%s' target='"  + target + "'>%s</a></u>";
+			}
 			
 			if ( url.indexOf( HTTP ) > -1 )
 			{
-				result = StringUtil.replace( result, url, url );
+				result = StringUtil.replace( result, url, name );
 			}
 			else
 			{
-				result = StringUtil.replace( result, HTTP + url, url );
+				result = StringUtil.replace( result, HTTP + url, name );
 			}
 			
 			return TextUtils.getHTMLFontString( StyleDict.BLUE2, result );

@@ -41,6 +41,12 @@ package com.collab.cabin.util
 		/**
 		 * Join a list of array elements into a forward-slash seperated path.
 		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var filename:String = PathUtils.join( "images", "nature", "flower.png" );
+		 * trace( filename ); // images/nature/flower.png</listing>
+		 * 
 		 * @param parts
 		 * @return Path
 		 */		
@@ -61,9 +67,16 @@ package com.collab.cabin.util
 		}
 		
 		/**
-		 * Get filename from path.
-		 *  
-		 * @param path
+		 * Get filename from path with forward-slashes.
+		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var path:String = "/path/to/image.png";
+		 * var filename:String = PathUtils.basename( path );
+		 * trace( filename ); // image.png</listing>
+		 * 
+		 * @param path      Path, ie. 'test/image.png'.
 		 * @return Filename
 		 */		
 		public static function basename( path:String ):String
