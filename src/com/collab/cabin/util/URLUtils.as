@@ -49,7 +49,7 @@ package com.collab.cabin.util
 		 * <listing version="3.0">
 		 * var url:String = "http://google.com";
 		 * var hyperlink:String = URLUtils.createHyperlink( link );
-		 * trace( hyperlink ); // <font color='#ff'><u><a href='http://google.com'>http://google.com</a></u></font></listing>
+		 * trace( hyperlink ); // &lt;font color='#ff'&gt;&lt;u&gt;&lt;a href='http://google.com'&gt;http://google.com&lt;/a&gt;&lt;/u&gt;&lt;/font&gt;</listing>
 		 * 
 		 * @param url Anchor URL.
 		 * @param name Name for the anchor. Use null to use the value of <code>url</code> (default).

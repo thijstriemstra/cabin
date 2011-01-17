@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.display.util
 {
+	import com.collab.cabin.util.StringUtil;
+	
 	import flash.text.AntiAliasType;
 	import flash.text.Font;
 	import flash.text.TextField;
@@ -54,20 +56,10 @@ package com.collab.cabin.display.util
 													   align:String="center" ) : TextField
 		{
 			var debug:Boolean = false;
-			
-			var format:TextFormat = new TextFormat();
-			format.size = size;
-			format.align = align;
-			format.color = color;
-			format.leading = leading;
-			format.bold = false;
-			format.kerning = false;
-			if ( font )
-			{
-				format.font = font.fontName;
-			}
-			
+			var format:TextFormat = createTextFormat( font, size, color, bold,
+													  leading, align );
 			var tf:TextField = new TextField();
+			
 			tf.tabEnabled = false;
 			tf.doubleClickEnabled = false;
 			tf.mouseEnabled = false;
@@ -119,14 +111,23 @@ package com.collab.cabin.display.util
 		}
 		
 		/**
-		 * Create textformat with standard font.
+		 * Create TextFormat with standard font.
 		 * 
-		 * @param font
-		 * @param size
-		 * @param color
-		 * @param bold
-		 * @param leading
-		 * @param align
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var arial:Font = new Arial();
+		 * var fmt:TextFormat = TextUtils.createTextFormat( arial, 12, 0xFFFFFF );
+		 * trace( fmt.font ); // Arial
+		 * trace( fmt.size ); // 12
+		 * trace( fmt.bold ); false</listing>
+		 * 
+		 * @param font		Font instance.
+		 * @param size		Text size.
+		 * @param color		Text color.
+		 * @param bold		Font weight
+		 * @param leading	Text leading.
+		 * @param align		Text align. One of: 'left', 'right', 'center'.
 		 * @return 
 		 */		
 		public static function createTextFormat( font:Font=null, size:Number=12,
@@ -139,7 +140,7 @@ package com.collab.cabin.display.util
 			format.align = align;
 			format.color = color;
 			format.leading = leading;
-			format.bold = false;
+			format.bold = bold;
 			format.kerning = false;
 			if ( font)
 			{
@@ -150,7 +151,13 @@ package com.collab.cabin.display.util
 		}
 		
 		/**
-		 * Get colorized HTML text.
+		 * Get colorized HTML font tag.
+		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var dog:String = TextUtils.getHTMLFontString( 0xffffff, "Lassie" );
+		 * trace( dog ); // &lt;font color='#ffffff'&gt;Lassie&lt;/font'&gt;</listing>
 		 * 
 		 * @param color
 		 * @param text
@@ -158,7 +165,10 @@ package com.collab.cabin.display.util
 		 */		
 		public static function getHTMLFontString( color:uint, text:String ):String
 		{
-			return "<font color='#" + color.toString( 16 ) + "'>" + text + "</font>";
+			// XXX: move to decorator
+			var markup:String = "<font color='#%s'>%s</font>";
+			
+			return StringUtil.replace( markup, color.toString( 16 ), text );
 		}
 		
 	}
