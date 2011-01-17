@@ -18,10 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin
 {
+	import com.collab.cabin.util.DateUtilsTestCase;
+
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
-	public class MainSuite
+	public class UtilSuite
 	{
-		public var t1	: TestCase1;
+		public var t1	: DateUtilsTestCase;
 	}
 }

@@ -16,30 +16,41 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.collab.cabin
+package com.collab.cabin.util
 {
-	import org.flexunit.Assert;
+	import org.hamcrest.assertThat;
+	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.notNullValue;
 	
-	public class TestCase1
+	public class DateUtilsTestCase
 	{
-		private var count:int = 0;		
+		private var lastThursday:Date;
 		
 		[Before]
 		public function runBeforeEveryTest():void
-		{   
-			count = 10;
+		{
+			lastThursday = new Date();
 		}   
 		
 		[After]  
 		public function runAfterEveryTest():void
-		{   
-			count = 0;  
-		} 
+		{
+			lastThursday = null;
+		}
 		
 		[Test]  
-		public function subtraction():void
+		public function create_timestamp():void
 		{ 
-			Assert.assertEquals(8, count-2);   
+			assertThat( DateUtils.createClientStamp(), notNullValue() );
+		}
+		
+		[Test]  
+		public function valid_timestamp():void
+		{ 
+			var ts:String = DateUtils.createClientStamp();
+			var now_ts:String = lastThursday.toTimeString().substr( 0, 8 );
+			
+			assertThat( ts, equalTo( now_ts ));
 		}
 	}
 
