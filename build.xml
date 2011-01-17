@@ -58,7 +58,7 @@
 			      localTrusted="true" verbose="false">
 	      <source dir="${app.src}" />
 	      <testSource dir="${app.tests}">
-	         <include name="**/*Test.as" />
+	         <include name="**/*Suite.as" />
 	      </testSource>
 	      <library dir="${lib.path}" />
 	   </flexunit>
