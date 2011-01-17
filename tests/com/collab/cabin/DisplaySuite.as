@@ -24,6 +24,9 @@ package com.collab.cabin
 	[RunWith("org.flexunit.runners.Suite")]
 	public class DisplaySuite
 	{
-		public var t1	: TextUtilsTestCase;
+		public var t1	: TextUtilsTest;
+		public var t2	: DrawingUtilsTest;
+		public var t3   : ContentLoaderTest;
+		public var t4   : AppContextMenuTest;
 	}
 }

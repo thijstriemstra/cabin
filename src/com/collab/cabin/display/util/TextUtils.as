@@ -36,70 +36,31 @@ package com.collab.cabin.display.util
 	 */	
 	public class TextUtils
 	{
-		/**
-		 * Create a styled text field.
-		 * 
-		 * @param font
-		 * @param text
-		 * @param size
-		 * @param color
-		 * @param ml
-		 * @param bold
-		 * @param leading
-		 * @param align
-		 * 
-		 * @return A new <code>TextField</code> instance
-		 */		
-		private static function createStyledTextField( font:Font, text:String="", size:Number=16,
-											   		   color:uint=0x000000, ml:Boolean=false,
-													   bold:Boolean=false, leading:Number=0,
-													   align:String="center" ) : TextField
-		{
-			var debug:Boolean = false;
-			var format:TextFormat = createTextFormat( font, size, color, bold,
-													  leading, align );
-			var tf:TextField = new TextField();
-			
-			tf.tabEnabled = false;
-			tf.doubleClickEnabled = false;
-			tf.mouseEnabled = false;
-			tf.mouseWheelEnabled = false;
-			tf.selectable = false;
-			tf.antiAliasType = AntiAliasType.ADVANCED;
-			tf.defaultTextFormat = format;
-			tf.background = debug;
-			tf.backgroundColor = StyleDict.GREY1;
-			tf.textColor = format.color as uint;
-			tf.wordWrap = ml;
-			tf.border = debug;
-			tf.borderColor = StyleDict.RED1;
-			tf.autoSize = TextFieldAutoSize.LEFT;
-			tf.multiline = ml;
-			if ( font )
-			{
-				tf.embedFonts = true;
-			}
-			
-			if ( text )
-			{
-				tf.htmlText = text;
-			}
-			
-			return tf;
-		}
+		// ====================================
+		// PUBLIC METHODS
+		// ====================================
 		
 		/**
-		 * Create textfield with standard font.
+		 * Create styled TextField.
 		 * 
-		 * @param font
-		 * @param text
-		 * @param size
-		 * @param color
-		 * @param ml
-		 * @param bold
-		 * @param leading
-		 * @param align
-		 * @return 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var arial:Font = new Arial();
+		 * var tf:TextField = TextUtils.createTextField( arial, "Art of rolling.", 12, 0xFFFFFF );
+		 * trace( tf.font ); // Arial
+		 * trace( tf.size ); // 12
+		 * trace( tf.htmlText ); // Art of rolling.</listing>
+		 * 
+		 * @param font		Font instance.
+		 * @param text		Text to display.
+		 * @param size		Text size.
+		 * @param color		Text color.
+		 * @param ml		Multiline. Either true or false.
+		 * @param bold		Font weight.
+		 * @param leading	Text leading.
+		 * @param align		Text align. One of: 'left', 'right', 'center'.
+		 * @return 			New styled TextField instance.
 		 */		
 		public static function createTextField( font:Font=null, text:String="", size:Number=15,
 												color:uint=0x000000, ml:Boolean=false,
@@ -120,7 +81,7 @@ package com.collab.cabin.display.util
 		 * var fmt:TextFormat = TextUtils.createTextFormat( arial, 12, 0xFFFFFF );
 		 * trace( fmt.font ); // Arial
 		 * trace( fmt.size ); // 12
-		 * trace( fmt.bold ); false</listing>
+		 * trace( fmt.bold ); // false</listing>
 		 * 
 		 * @param font		Font instance.
 		 * @param size		Text size.
@@ -169,6 +130,62 @@ package com.collab.cabin.display.util
 			var markup:String = "<font color='#%s'>%s</font>";
 			
 			return StringUtil.replace( markup, color.toString( 16 ), text );
+		}
+		
+		// ====================================
+		// PRIVATE METHODS
+		// ====================================
+		
+		/**
+		 * Create a styled text field.
+		 * 
+		 * @param font
+		 * @param text
+		 * @param size
+		 * @param color
+		 * @param ml
+		 * @param bold
+		 * @param leading
+		 * @param align
+		 * 
+		 * @return A new <code>TextField</code> instance
+		 */		
+		private static function createStyledTextField( font:Font, text:String="", size:Number=16,
+													   color:uint=0x000000, ml:Boolean=false,
+													   bold:Boolean=false, leading:Number=0,
+													   align:String="center" ) : TextField
+		{
+			var debug:Boolean = false;
+			var format:TextFormat = createTextFormat( font, size, color, bold,
+				leading, align );
+			var tf:TextField = new TextField();
+			
+			tf.tabEnabled = false;
+			tf.doubleClickEnabled = false;
+			tf.mouseEnabled = false;
+			tf.mouseWheelEnabled = false;
+			tf.selectable = false;
+			tf.antiAliasType = AntiAliasType.ADVANCED;
+			tf.defaultTextFormat = format;
+			tf.background = debug;
+			tf.backgroundColor = StyleDict.GREY1;
+			tf.textColor = format.color as uint;
+			tf.wordWrap = ml;
+			tf.border = debug;
+			tf.borderColor = StyleDict.RED1;
+			tf.autoSize = TextFieldAutoSize.LEFT;
+			tf.multiline = ml;
+			if ( font )
+			{
+				tf.embedFonts = true;
+			}
+			
+			if ( text )
+			{
+				tf.htmlText = text;
+			}
+			
+			return tf;
 		}
 		
 	}

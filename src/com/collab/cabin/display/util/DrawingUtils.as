@@ -34,36 +34,65 @@ package com.collab.cabin.display.util
 	 */	
 	public class DrawingUtils
 	{
+		// ====================================
+		// PRIVATE VARS
+		// ====================================
+		
+		private static var background	: Sprite;
+		
+		// ====================================
+		// PUBLIC METHODS
+		// ====================================
+		
 		/**
-		 * Draw a solid fill with a corner radius.
+		 * Draw a solid rounded rectangle.
 		 * 
-		 * @param width
-		 * @param height
-		 * @param cornerRadius
-		 * @param color
-		 * @param alpha
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var width:Number = 200;
+		 * var height:Number = 200;
+		 * var cornerRadius:Number = 10;
+		 * var color:uint = 0xFFFFFF;
+		 * var fill:Sprite = DrawingUtils.drawFill( width, height, cornerRadius, color );
+		 * addChild( fill );</listing>
+		 * 
+		 * @param width			Width of the shape.
+		 * @param height		Height of the shape.
+		 * @param cornerRadius	Rounded corner radius.
+		 * @param color			Color of the shape.
+		 * @param alpha			Alpha channel.
 		 * @return 
 		 */		
 		public static function drawFill( width:Number, height:Number,
 										 cornerRadius:Number=20,
 										 color:uint=0xFFFFFF, alpha:Number=1 ):Sprite
 		{
-			var bg:Sprite = new Sprite();
-			bg.alpha = alpha;
-			bg.graphics.beginFill( color, StyleDict.BACKGROUND_ALPHA );
-			bg.graphics.drawRoundRect( 0, 0, width, height, cornerRadius,
-									   cornerRadius );
-			bg.graphics.endFill();
+			background = new Sprite();
+			background.alpha = alpha;
+			background.graphics.beginFill( color, StyleDict.BACKGROUND_ALPHA );
+			background.graphics.drawRoundRect( 0, 0, width, height, cornerRadius,
+									           cornerRadius );
+			background.graphics.endFill();
 			
-			return bg;
+			return background;
 		}
 		
 		/**
 		 * Draw gradient fill with a corner radius.
 		 * 
-		 * @param width
-		 * @param height
-		 * @param radius
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var width:int = 200;
+		 * var height:int = 200;
+		 * var cornerRadius:int = 10;
+		 * var fill:Shape = DrawingUtils.drawGradientFill( width, height, cornerRadius );
+		 * addChild( fill );</listing>
+		 * 
+		 * @param width		Width of the shape.
+		 * @param height	Height of the shape.
+		 * @param radius	Rounded corner radius.
 		 * @return 
 		 */		
 		public static function drawGradientFill( width:int, height:int, radius:int ):Shape
@@ -83,7 +112,18 @@ package com.collab.cabin.display.util
 		/**
 		 * Draw a horizontal line.
 		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var width:int = 10;
+		 * var color:uint = 0x0000FF;
+		 * var line:Shape = DrawingUtils.drawHLine( width, color );
+		 * addChild( line );</listing>
+		 * 
 		 * @param width
+		 * @param color
+		 * @param alpha
+		 * @param thickness
 		 * @return 
 		 */		
 		public static function drawHLine( width:int=10, color:uint=0xFFFFFF, alpha:Number=.2,

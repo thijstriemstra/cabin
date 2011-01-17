@@ -34,7 +34,7 @@ package com.collab.cabin.display
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.hasProperties;
 	
-	public class TextUtilsTestCase
+	public class TextUtilsTest
 	{	
 		private var fnt:Font;
 		private var tf:TextField;

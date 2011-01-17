@@ -22,7 +22,7 @@ package com.collab.cabin.util
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.text.emptyString;
 	
-	public class StringUtilTestCase
+	public class StringUtilTest
 	{		
 		[Test]
 		public function testReplace():void

@@ -49,8 +49,9 @@ package com.collab.cabin.display
 		}
 		
 		/**
-		 * @return 
+		 * Title of the app/first item in the menu.
 		 * 
+		 * @return 
 		 */		
 		public function get title() 		: String
 		{

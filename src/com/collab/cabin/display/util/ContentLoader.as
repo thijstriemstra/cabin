@@ -37,6 +37,10 @@ package com.collab.cabin.display.util
 	 */	
 	public class ContentLoader extends Loader
 	{
+		// ====================================
+		// PROTECTED VARS
+		// ====================================
+		
 		/**
 		 * URL of the content item. 
 		 */		

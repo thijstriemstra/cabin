@@ -16,17 +16,33 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.collab.cabin
+package com.collab.cabin.display
 {
-	import com.collab.cabin.util.*;
-
-	[Suite]
-	[RunWith("org.flexunit.runners.Suite")]
-	public class UtilSuite
-	{
-		public var t1	: DateUtilsTest;
-		public var t2   : PathUtilsTest;
-		public var t3   : StringUtilTest;
-		public var t4	: URLUtilsTest;
+	public class ContentLoaderTest
+	{		
+		[Before]
+		public function setUp():void
+		{
+		}
+		
+		[After]
+		public function tearDown():void
+		{
+		}
+		
+		[BeforeClass]
+		public static function setUpBeforeClass():void
+		{
+		}
+		
+		[AfterClass]
+		public static function tearDownAfterClass():void
+		{
+		}
+		
+		[Test]
+		public function testLoad():void
+		{
+		}
 	}
 }

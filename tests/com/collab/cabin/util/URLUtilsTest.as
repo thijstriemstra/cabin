@@ -21,22 +21,30 @@ package com.collab.cabin.util
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
 	
-	public class URLUtilsTestCase
-	{		
+	public class URLUtilsTest
+	{	
+		private var url	: String;
+		
+		[After]
+		public function tearDown():void
+		{
+			url = null;
+		}
+		
 		[Test]
 		public function testCreateHyperlink():void
 		{
-			var url1:String = URLUtils.createHyperlink( 'http://google.com' );
-			assertThat( url1, equalTo( "<font color='#ff'><u><a href='http://google.com'>http://google.com</a></u></font>" ));
+			url = URLUtils.createHyperlink( 'http://google.com' );
+			assertThat( url, equalTo( "<font color='#ff'><u><a href='http://google.com'>http://google.com</a></u></font>" ));
 			
-			var url2:String = URLUtils.createHyperlink( 'http://yahoo.com', 'Yahoo!' );
-			assertThat( url2, equalTo( "<font color='#ff'><u><a href='http://yahoo.com'>Yahoo!</a></u></font>" ));
+			url = URLUtils.createHyperlink( 'http://yahoo.com', 'Yahoo!' );
+			assertThat( url, equalTo( "<font color='#ff'><u><a href='http://yahoo.com'>Yahoo!</a></u></font>" ));
 			
-			var url3:String = URLUtils.createHyperlink( 'http://twistedmatrix.com', 'Twisted', '_blank' );
-			assertThat( url3, equalTo( "<font color='#ff'><u><a href='http://twistedmatrix.com' target='_blank'>Twisted</a></u></font>" ));
+			url = URLUtils.createHyperlink( 'http://twistedmatrix.com', 'Twisted', '_blank' );
+			assertThat( url, equalTo( "<font color='#ff'><u><a href='http://twistedmatrix.com' target='_blank'>Twisted</a></u></font>" ));
 			
-			var url4:String = URLUtils.createHyperlink( 'http://pyamf.org', null, 'top' );
-			assertThat( url4, equalTo( "<font color='#ff'><u><a href='http://pyamf.org' target='top'>http://pyamf.org</a></u></font>" ));
+			url = URLUtils.createHyperlink( 'http://pyamf.org', null, 'top' );
+			assertThat( url, equalTo( "<font color='#ff'><u><a href='http://pyamf.org' target='top'>http://pyamf.org</a></u></font>" ));
 		}
 		
 		[Test]

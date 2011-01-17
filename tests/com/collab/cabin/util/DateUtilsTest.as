@@ -1,7 +1,7 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collab
+Copyright (C) 2011 Collab
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -20,26 +20,38 @@ package com.collab.cabin.util
 {
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
-	import org.hamcrest.text.endsWith;
+	import org.hamcrest.object.notNullValue;
 	
-	public class PathUtilsTestCase
-	{		
-		[Test]
-		public function testBasename():void
+	public class DateUtilsTest
+	{
+		private var lastThursday:Date;
+		
+		[Before]
+		public function runBeforeEveryTest():void
 		{
-			var pathA:String = PathUtils.basename( "abc/foo.bar" );
-			var pathB:String = PathUtils.basename( "abc//foo.bar" );
+			lastThursday = new Date();
+		}   
+		
+		[After]  
+		public function runAfterEveryTest():void
+		{
+			lastThursday = null;
+		}
+		
+		[Test]  
+		public function create_timestamp():void
+		{ 
+			assertThat( DateUtils.createClientStamp(), notNullValue() );
+		}
+		
+		[Test]  
+		public function valid_timestamp():void
+		{ 
+			var ts:String = DateUtils.createClientStamp();
+			var now_ts:String = lastThursday.toTimeString().substr( 0, 8 );
 			
-			assertThat( pathA, endsWith( 'foo.bar' ));
-			assertThat( pathB, endsWith( 'foo.bar' ));
+			assertThat( ts, equalTo( now_ts ));
 		}
-		
-		[Test]
-		public function testJoin():void
-		{
-			var filename:String = PathUtils.join( "images", "nature", "flower.png" );
-			assertThat( filename, equalTo( "images/nature/flower.png" ));
-		}
-		
 	}
+
 }
