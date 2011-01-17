@@ -18,11 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.controls.menu
 {
-	import com.collab.cabin.core.UIComponent;
-	import com.collab.cabin.display.util.StyleDict;
 	import com.collab.cabin.controls.Menu;
 	import com.collab.cabin.controls.buttons.LabelButton;
+	import com.collab.cabin.core.UIComponent;
+	import com.collab.cabin.display.util.StyleDict;
 	import com.collab.cabin.events.MenuItemClickEvent;
+	import com.collab.cabin.util.StringUtil;
 	
 	import flash.events.MouseEvent;
 	
@@ -146,7 +147,7 @@ package com.collab.cabin.controls.menu
 		 * 
 		 * <p>The default value is <code>null</code>.</p>
 		 * 
-		 * @return 
+		 * @return Instance of Menu.
 		 */		
 		public function get menu():Menu
 		{
@@ -170,8 +171,12 @@ package com.collab.cabin.controls.menu
 		{
 			// init vars
 			this.label = label;
-			this.name = label;
 			this.itemIndex = index;
+			
+			if ( label )
+			{
+				this.name = label;
+			}
 			
 			this.upColor = StyleDict.BLACK;
 			this.selectColor = StyleDict.GREY4;
@@ -211,12 +216,11 @@ package com.collab.cabin.controls.menu
 		
 		/**
 		 * @private 
-		 * 
 		 */		
 		override protected function invalidate():void
 		{
 			removeChildFromDisplayList( button );
-			
+
 			super.invalidate();
 		}
 		
@@ -244,7 +248,9 @@ package com.collab.cabin.controls.menu
 		 */		
 		override public function toString():String
 		{
-			return "<MenuItem label='" + label + "' index='" + itemIndex + "'/>";
+			var msg:String = "<MenuItem label='%s' index='%s'/>";
+			
+			return StringUtil.replace( msg, label, itemIndex );
 		}
 		
 		// ====================================

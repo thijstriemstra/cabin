@@ -25,7 +25,7 @@ package com.collab.cabin.core
 	import flash.events.Event;
 
 	// ====================================
-	// EVENTS
+	// EVENT METADATA
 	// ====================================
 	
 	/**

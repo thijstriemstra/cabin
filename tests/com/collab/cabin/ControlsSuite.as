@@ -19,11 +19,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package com.collab.cabin
 {
 	import com.collab.cabin.controls.*;
+	import com.collab.cabin.controls.menu.*;
 
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
 	public class ControlsSuite
 	{
-		public var t1	: MenuTest;
+		public var t1	: MenuItemTest;
+		public var t2 	: FlashColorPickerTest;
+		public var t3   : MenuTest;
 	}
 }
