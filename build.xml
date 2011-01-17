@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="cabin" default="compile" basedir=".">
+<project name="cabin" default="all" basedir=".">
 	
 	<property file="${basedir}/build.properties" />
+	<xmlproperty file="${FLEX_HOME}/flex-sdk-description.xml" keepRoot="false"
+	                 prefix="flex"/>
+	    
+    <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
+    <taskdef resource="flexUnitTasks.tasks">
+       <classpath>
+           <fileset dir="${lib.path}">
+               <include name="flexUnitTasks*.jar" />
+           </fileset>
+       </classpath>
+    </taskdef>
 	
-	<target name="compile" depends="clean" description="Build API docs and SWC">
-		<antcall target="api-docs" description="Full build of API docs"/>
-		<antcall target="build-lib" description="Build the SWC file"/>
+	<target name="all" depends="build-environment, clean" description="Build API docs, run tests and build SWC">
+		<antcall target="api-docs" />
+		<antcall target="build-lib" />
+		<antcall target="test" />
 	</target>
 
 	<target name="clean">
 		<delete dir="${basedir}/${app.outputfolder}" failOnError="true"
                 includeEmptyDirs="true"/>
 		<mkdir dir="${basedir}/${app.outputfolder}"/>
+	</target>
+	
+	<target name="build-environment">
+		<echo>${ant.version}</echo>
+		<echo>Java ${ant.java.version}</echo>
+		<echo>Flex ${flex.version}.${flex.build}</echo>
 	</target>
 
 	<target name="api-docs" description="Generate API documentation">
@@ -33,14 +51,31 @@
 		</exec>
 	</target>
     
-    <target name="update-manifest" description="Update class manifest">
-		<exec executable="bash" failonerror="true">
-			<arg line="${manifest.exe}"/>
-            <arg line="${app.src}"/>
-			<arg value="test.xml" />
-		</exec>
-    	<move file="${app.src}/test.xml" tofile="${lib.manifest}"
-              overwrite="true" />
-	</target>
+	<target name="test" depends="build-environment, clean" description="Run tests and publish reports">
+		<flexunit workingDir="${basedir}/${app.outputfolder}"
+		          toDir="${app.reports}" haltonfailure="false"
+	              command="${flashplayer.exe}"
+			      localTrusted="true" verbose="false">
+	      <source dir="${app.src}" />
+	      <testSource dir="${app.tests}">
+	         <include name="**/*Test.as" />
+	      </testSource>
+	      <library dir="${lib.path}" />
+	   </flexunit>
+	
+		<mkdir dir="${app.reports}" />
+		
+		<junitreport todir="${app.reports}">
+			<fileset dir="${app.reports}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report format="noframes" todir="${app.reports}/html">
+				<param name="TITLE" expression="Test results for Cabin ${lib.version}"/>
+			</report>
+		</junitreport>
+		  <move file="${app.reports}/html/junit-noframes.html"
+		  	    tofile="${app.reports}/index.html"/>
+
+    </target>
 
 </project>

@@ -1,5 +1,6 @@
 build.properties
 /lib/*.swc
+/lib/*.jar
 /html-template
 /.settings
 /bin
