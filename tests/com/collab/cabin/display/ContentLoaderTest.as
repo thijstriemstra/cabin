@@ -18,31 +18,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.display
 {
+	import com.collab.cabin.display.util.ContentLoader;
+	
 	public class ContentLoaderTest
 	{		
-		[Before]
+		private var ldr	: ContentLoader;
+		
+		[Before(async)]
 		public function setUp():void
 		{
+			ldr = new ContentLoader( "http://en.wikipedia.org/favicon.ico" );
 		}
 		
-		[After]
+		[After(async)]
 		public function tearDown():void
 		{
+			ldr = null;
 		}
 		
-		[BeforeClass]
-		public static function setUpBeforeClass():void
-		{
-		}
-		
-		[AfterClass]
-		public static function tearDownAfterClass():void
-		{
-		}
-		
-		[Test]
+		[Test(async)]
+		[Ignore]
 		public function testLoad():void
 		{
 		}
+		
 	}
 }
