@@ -32,6 +32,7 @@ package com.collab.cabin.containers.scrollpane
 	/**
 	 * Custom <code>fl.containers.ScrollPane</code> with a <code>children</code> list.
 	 * 
+	 * @see fl.containers.ScrollPane ScrollPane
 	 * @author Thijs Triemstra
 	 * 
 	 * @langversion 3.0
@@ -75,6 +76,7 @@ package com.collab.cabin.containers.scrollpane
 			
 			_children = [];
 			
+			// XXX: not sure about this clashing
 			name = getQualifiedClassName( this );
 			scrollDrag = false;
 			horizontalScrollPolicy = ScrollPolicy.ON;
@@ -102,10 +104,30 @@ package com.collab.cabin.containers.scrollpane
 		}
 		
 		/**
+		 * Layout children.
+		 * 
+		 * @private
+		 */		
+		public function layoutChildren():void
+		{
+		}
+		
+		/**
 		 * Add specified <code>child</code>.
 		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var pane:FlashScrollPane = new FlashScrollPane();
+		 * var shape:Sprite = new Sprite();
+		 * 
+		 * // add item
+		 * pane.add( shape );
+		 * 
+		 * trace( pane.children.length ); // 0</listing>
+		 * 
 		 * @param child
-		 * @return 
+		 * @return 		The <code>child</code> display object that was added.
 		 */		
 		public function add( child:DisplayObject ):DisplayObject
 		{
@@ -122,10 +144,24 @@ package com.collab.cabin.containers.scrollpane
 		/**
 		 * Remove specified <code>child</code>.
 		 * 
-		 * @param child
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var pane:FlashScrollPane = new FlashScrollPane();
+		 * 
+		 * var shape:Sprite = new Sprite();
+		 * trace( pane.remove( shape )); // false, not added yet
+		 * 
+		 * pane.add( shape );
+		 * trace( pane.remove( shape )); // true</listing>
+		 * 
+		 * @param child	Display object.
+		 * @return Return true if child was found and removed, otherwise false.
 		 */		
-		public function remove( child:DisplayObject ):void
+		public function remove( child:DisplayObject ):Boolean
 		{
+			var success:Boolean = false;
+			
 			if ( child && source && source.contains( child ))
 			{
 				var cnt:int = 0;
@@ -135,42 +171,76 @@ package com.collab.cabin.containers.scrollpane
 					if ( _children[ cnt ] == child )
 					{
 						_children.splice( cnt, 1 );
+						break;
 					}
 				}
 				
 				source.removeChild( child );
+				success = true;
 				update();
 			}
+			
+			return success;
 		}
 		
 		/**
 		 * Remove child at specified <code>index</code>.
 		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var pane:FlashScrollPane = new FlashScrollPane();
+		 * 
+		 * var shape:Sprite = new Sprite();
+		 * trace( pane.removeAt( 1 )); // false, item doesn't exist
+		 * 
+		 * // add two items
+		 * pane.add( shape );
+		 * pane.add( shape );
+		 * 
+		 * trace( pane.removeAt( 1 )); // true</listing>
+		 * 
 		 * @param index
-		 * @return 
+		 * @return 		Boolean indicating if the item was removed or not.
 		 */		
-		public function removeAt( index:int ):void
+		public function removeAt( index:int ):Boolean
 		{
-			var child:DisplayObject;
+			var success:Boolean = false;
 			
 			try
 			{
-				child = _children[ index ];
+				var child:DisplayObject = _children[ index ];
+				success = remove( child );
 			}
 			catch ( e:Error )
 			{
-				return;
 			}
 			
-			remove( child );
-			_children.splice( index, 1 );
+			return success;
 		}
 		
 		/**
-		 * Remove all children.
+		 * Removes all children.
+		 * 
+		 * @example The following code shows how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * var pane:FlashScrollPane = new FlashScrollPane();
+		 * var shape:Sprite = new Sprite();
+		 * 
+		 * // add two items
+		 * pane.add( shape );
+		 * pane.add( shape );
+		 * 
+		 * trace( pane.removeAll() ); // true
+		 * trace( pane.children.length ); // 0</listing>
+		 * 
+		 * @return Boolean indicating if the items were removed or not.
 		 */		
-		public function removeAll():void
+		public function removeAll():Boolean
 		{
+			var success:Boolean = false;
+			
 			if ( _children && _children.length > 0 )
 			{
 				var child:*;
@@ -182,14 +252,10 @@ package com.collab.cabin.containers.scrollpane
 				}
 				
 				_children = [];
+				success = true;
 			}
-		}
-		
-		/**
-		 * Layout children.
-		 */		
-		public function layoutChildren():void
-		{
+			
+			return success;
 		}
 		
 		// ====================================
@@ -197,6 +263,7 @@ package com.collab.cabin.containers.scrollpane
 		// ====================================
 		
 		/**
+		 * @private
 		 * @param event
 		 */		
 		protected function onLoadComplete( event:Event ):void
@@ -205,6 +272,7 @@ package com.collab.cabin.containers.scrollpane
 		}
 		
 		/**
+		 * @private
 		 * @param arg0
 		 */		
 		override protected function keyUpHandler( arg0:KeyboardEvent ):void
@@ -213,6 +281,7 @@ package com.collab.cabin.containers.scrollpane
 		}
 		
 		/**
+		 * @private
 		 * @param arg0
 		 */		
 		override protected function keyDownHandler( arg0:KeyboardEvent ):void
@@ -222,6 +291,7 @@ package com.collab.cabin.containers.scrollpane
 		
 		/**
 		 * @param event
+		 * @private
 		 */		
 		protected function onScroll( event:ScrollEvent ):void
 		{

@@ -39,7 +39,7 @@ package com.collab.cabin.util
 		// ====================================
 		
 		/**
-		 * Join a list of array elements into a forward-slash seperated path.
+		 * Join a list of strings into a forward-slash seperated path.
 		 * 
 		 * @example The following code shows how to use this method:
 		 * 

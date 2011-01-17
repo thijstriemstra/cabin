@@ -18,66 +18,150 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.containers.scrollpane
 {
+	import flash.display.DisplayObject;
+	import flash.display.Sprite;
+	import flash.events.Event;
+	
+	import org.flexunit.async.Async;
+	import org.fluint.uiImpersonation.UIImpersonator;
+	import org.hamcrest.assertThat;
+	import org.hamcrest.collection.arrayWithSize;
+	import org.hamcrest.collection.emptyArray;
+	import org.hamcrest.object.equalTo;
+	import org.hamcrest.object.hasProperties;
+	
 	public class FlashScrollPaneTest
 	{		
-		[Before]
+		private var pane	: FlashScrollPane;
+		
+		[Before(async,ui)]
 		public function setUp():void
 		{
+			pane = new FlashScrollPane();
+			
+			Async.proceedOnEvent( this, pane, Event.ADDED, 100 );
+			UIImpersonator.addChild( pane );
 		}
 		
-		[After]
+		[After(async,ui)]
 		public function tearDown():void
 		{
+			UIImpersonator.removeChild( pane );
+			pane = null;
 		}
 		
-		[BeforeClass]
-		public static function setUpBeforeClass():void
+		[Test]
+		public function dimensions():void
 		{
-		}
-		
-		[AfterClass]
-		public static function tearDownAfterClass():void
-		{
+			assertThat( pane, hasProperties({
+				width: 100,
+				height: 100
+			}));
 		}
 		
 		[Test]
 		public function testAdd():void
 		{
+			var shape:Sprite = new Sprite();
+			var result:DisplayObject = pane.add( shape );
+			
+			assertThat( result, equalTo( shape ));
+			assertThat( pane.children, arrayWithSize( 1 ));
 		}
 		
 		[Test]
 		public function testGet_children():void
 		{
+			assertThat( pane.children, emptyArray() );
 		}
 		
 		[Test]
 		public function testSet_children():void
 		{
+			var children:Array = [];
+			var shape:Sprite;
+			var cnt:int = 0;
+			
+			for ( cnt; cnt<10; cnt++ )
+			{
+				shape = new Sprite();
+				children.push( shape );
+			}
+			
+			pane.children = children;
+			assertThat( pane.children, arrayWithSize( 10 ));
+			
+			pane.children = pane.children.slice(0, 5);
+			assertThat( pane.children, arrayWithSize( 5 ));
 		}
 		
 		[Test]
 		public function testLayoutChildren():void
 		{
-		}
-		
-		[Test]
-		public function testRemove():void
-		{
-		}
-		
-		[Test]
-		public function testRemoveAll():void
-		{
-		}
-		
-		[Test]
-		public function testRemoveAt():void
-		{
+			pane.layoutChildren();
+			assertThat( pane.children, emptyArray() );
 		}
 		
 		[Test]
 		public function testUpdate():void
 		{
+			pane.update();
+			assertThat( pane.children, emptyArray() );
 		}
+		
+		[Test]
+		public function testRemove():void
+		{
+			var shape:Sprite = new Sprite();
+			var removed:Boolean = pane.remove( shape );
+			
+			assertThat( removed, equalTo( false ));
+			assertThat( pane.children, emptyArray() );
+			
+			pane.add( shape );
+			assertThat( pane.children, arrayWithSize( 1 ));
+			
+			removed = pane.remove( shape );
+			assertThat( pane.children, emptyArray() );
+			assertThat( removed, equalTo( true ));
+		}
+		
+		[Test]
+		public function testRemoveAt():void
+		{
+			var shape:Sprite = new Sprite();
+			var removed:Boolean = pane.removeAt( 1 );
+			
+			assertThat( removed, equalTo( false ));
+			assertThat( pane.children, emptyArray() );
+			
+			pane.add( shape );
+			pane.add( shape );
+			pane.add( shape );
+			assertThat( pane.children, arrayWithSize( 3 ));
+			
+			removed = pane.removeAt( 1 );
+			assertThat( removed, equalTo( true ));
+			assertThat( pane.children, arrayWithSize( 2 ));
+		}
+		
+		[Test]
+		public function testRemoveAll():void
+		{
+			var shape:Sprite = new Sprite();
+			var removed:Boolean = pane.removeAll();
+			
+			assertThat( removed, equalTo( false ));
+			
+			pane.add( shape );
+			pane.add( shape );
+			pane.add( shape );
+			assertThat( pane.children, arrayWithSize( 3 ));
+			
+			removed = pane.removeAll();
+			assertThat( removed, equalTo( true ));
+			assertThat( pane.children, emptyArray() );
+		}
+
 	}
 }
