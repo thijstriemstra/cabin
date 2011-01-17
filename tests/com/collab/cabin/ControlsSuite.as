@@ -18,9 +18,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin
 {
+	import com.collab.cabin.containers.scrollpane.*;
 	import com.collab.cabin.controls.*;
+	import com.collab.cabin.controls.buttons.*;
 	import com.collab.cabin.controls.menu.*;
-
+	
 	[Suite]
 	[RunWith("org.flexunit.runners.Suite")]
 	public class ControlsSuite
@@ -28,5 +30,8 @@ package com.collab.cabin
 		public var t1	: MenuItemTest;
 		public var t2 	: FlashColorPickerTest;
 		public var t3   : MenuTest;
+		public var t4   : LabelButtonTest;
+		public var t5	: FlashButtonTest;
+		public var t6	: FlashScrollPaneTest;
 	}
 }

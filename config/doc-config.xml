@@ -9,6 +9,7 @@ Flex configuration file for Documentation compiler settings.
 
    <compiler>
        <strict>false</strict>
+       <show-actionscript-warnings>false</show-actionscript-warnings>
    </compiler>
 
    <!-- doc-sources: list of source file to include in the documentation.-->

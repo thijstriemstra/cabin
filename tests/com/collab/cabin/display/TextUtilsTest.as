@@ -33,6 +33,7 @@ package com.collab.cabin.display
 	import org.hamcrest.assertThat;
 	import org.hamcrest.object.equalTo;
 	import org.hamcrest.object.hasProperties;
+	import org.hamcrest.text.emptyString;
 	
 	public class TextUtilsTest
 	{	
@@ -102,7 +103,7 @@ package com.collab.cabin.display
 				border: equalTo( false ),
 				borderColor: equalTo( StyleDict.RED1 ),
 				autoSize: equalTo( TextFieldAutoSize.LEFT ),
-				htmlText: equalTo( "" ),
+				htmlText: emptyString(),
 				defaultTextFormat:  hasProperties({
 					align:  equalTo( "left" ),
 					size: equalTo( 15 )

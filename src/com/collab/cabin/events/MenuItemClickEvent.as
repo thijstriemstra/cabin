@@ -18,6 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.events
 {
+	import com.collab.cabin.util.StringUtil;
+	
 	import flash.events.Event;
 	
 	/**
@@ -38,6 +40,10 @@ package com.collab.cabin.events
 		 * @private 
 		 */		
 		internal static const NAME	: String = "MenuItemClickEvent_";
+		
+		/**
+		 * 
+		 */		
 		public static const CLICK 	: String = NAME + "click";
 		
 		// ====================================
@@ -88,8 +94,9 @@ package com.collab.cabin.events
 		
 		override public function toString():String
 		{
-			return "<MenuItemClickEvent index='" + index +
-				   "' label='" + label + "' />";
+			var msg:String = "<MenuItemClickEvent index='%s' label='%s' />";
+			
+			return StringUtil.replace( msg, index, label );
 		}
 		
 	}

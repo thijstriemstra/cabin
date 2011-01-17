@@ -1,7 +1,11 @@
 /*
 Cabin project.
 
-This program is free software: you can redistribute it and/or modifyon, either version 3 of the License, or
+Copyright (C) 2010-2011 Collab
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
 
 This program is distributed in the hope that it will be useful,
@@ -70,12 +74,9 @@ package com.collab.cabin.controls.buttons
 		}
 		public function set enabled( val:Boolean ):void
 		{
-			if (val)
-			{
-				_enabled = val;
-				mouseEnabled = buttonMode = _enabled;
-				invalidate();
-			}
+			_enabled = val;
+			mouseEnabled = buttonMode = _enabled;
+			invalidate();
 		}
 		
 		/**
@@ -171,6 +172,7 @@ package com.collab.cabin.controls.buttons
 			this.tabEnabled = false;
 			
 			_label = "";
+			_enabled = true;
 			_fontSize = fontSize;
 			_textColor = textUpColor;
 			_backgroundColor = backgroundColor;

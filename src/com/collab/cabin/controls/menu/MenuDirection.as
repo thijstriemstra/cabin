@@ -20,7 +20,7 @@ package com.collab.cabin.controls.menu
 {
 	/**
 	 * The MenuDirection class contains constants for the valid values 
-	 * of the com.collab.cabin.controls.Menu class <code>direction</code> property.
+	 * of the Menu class <code>direction</code> property.
 	 * 
 	 * <p>These constants indicate in which direction the menu will expand.</p>
 	 *
