@@ -1,7 +1,7 @@
 /*
 Cabin project.
 
-Copyright (C) 2010-2011 Collab
+Copyright (C) 2011 Collab
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -18,43 +18,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.log
 {
-	/**
-	 * Logging utilities.
-	 * 
-	 * @author Thijs Triemstra
-	 * 
-	 * @langversion 3.0
- 	 * @playerversion Flash 9
-	 */	
-	public class Logger
-	{
-		// ====================================
-		// PUBLIC METHODS
-		// ====================================
-		
-		public static function debug( msg:Object ):void
+	public class LoggerTest
+	{		
+		[Test]
+		public function testDebug():void
 		{
-			log( msg );
+			Logger.debug( {foo: "bar"} );
+			Logger.debug( "hello world" );
 		}
 		
-		public static function info( msg:Object ):void
+		[Test]
+		public function testInfo():void
 		{
-			log( msg );
+			Logger.info( {foo: "bar"} );
+			Logger.info( "hello world" );
 		}
 		
-		public static function error( msg:Object ):void
+		[Test]
+		public function testError():void
 		{
-			log( msg );
+			Logger.error( {foo: "bar"} );
+			Logger.error( "hello world" );
 		}
 		
-		// ====================================
-		// PRIVATE METHODS
-		// ====================================
-		
-		private static function log( msg:Object ):void
-		{
-			trace( msg );
-		}
-
 	}
 }

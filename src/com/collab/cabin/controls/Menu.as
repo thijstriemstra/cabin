@@ -18,9 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.controls
 {
-	import com.collab.cabin.core.UIComponent;
 	import com.collab.cabin.controls.menu.MenuDirection;
 	import com.collab.cabin.controls.menu.MenuItem;
+	import com.collab.cabin.core.UIComponent;
 	import com.collab.cabin.events.MenuItemClickEvent;
 	
 	import flash.geom.Point;
@@ -28,7 +28,7 @@ package com.collab.cabin.controls
 	/**
 	 * List of MenuItem instances.
 	 * 
-	 * @see com.collab.cabin.controls.menu.MenuItem
+	 * @see com.collab.cabin.controls.menu.MenuItem MenuItem
 	 * 
 	 * @author Thijs Triemstra
 	 * @langversion 3.0
@@ -155,11 +155,13 @@ package com.collab.cabin.controls
 		/**
 		 * Constructor. 
 		 * 
-		 * @param itemType Type of menu item.
-		 * @param direction
+		 * @param itemType 			Type of menu item.
+		 * @param direction			Direction of menu items. See MenuDirection.
 		 * @param offset
 		 * @param horizontalGap
 		 * @param verticalGap
+		 * 
+		 * @see com.collab.cabin.controls.menu.MenuDirection MenuDirection
 		 */		
 		public function Menu( itemType:Class=null, direction:String="vertical",
 							  offset:Point=null, horizontalGap:int=0, verticalGap:int=0 )
@@ -174,6 +176,12 @@ package com.collab.cabin.controls
 			}
 			
 			this.selectedMenuIndex = -1;
+			
+			if ( direction != MenuDirection.HORIZONTAL ||
+				 direction != MenuDirection.VERTICAL )
+			{
+				direction = MenuDirection.VERTICAL;
+			}
 			
 			_direction = direction;
 			_horizontalGap = horizontalGap;
@@ -248,6 +256,10 @@ package com.collab.cabin.controls
 								item.y = _offSet.y;
 								newX += item.buttonWidth + _horizontalGap;
 							}
+						}
+						else
+						{
+							// XXX: throw error
 						}
 					}
 				}

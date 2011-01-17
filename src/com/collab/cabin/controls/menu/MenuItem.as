@@ -45,7 +45,7 @@ package com.collab.cabin.controls.menu
 	 * <p>You can override the default item renderer by creating a custom item
 	 * renderer.</p>
 	 * 
-	 * @see com.collab.cabin.controls.Menu
+	 * @see com.collab.cabin.controls.Menu Menu
 	 * 
 	 * @author Thijs Triemstra
 	 * @langversion 3.0
