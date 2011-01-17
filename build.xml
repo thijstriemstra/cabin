@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (C) 2010-2011 Collab
+
+Project build file.
+-->
 <project name="cabin" default="all" basedir=".">
 	
 	<property file="${basedir}/build.properties" />
@@ -14,28 +19,33 @@
        </classpath>
     </taskdef>
 	
-	<target name="all" depends="build-environment, clean" description="Build API docs, run tests and build SWC">
-		<antcall target="api-docs" />
-		<antcall target="build-lib" />
-		<antcall target="test" />
-	</target>
-
-	<target name="clean">
-		<delete dir="${basedir}/${app.outputfolder}" failOnError="true"
-                includeEmptyDirs="true"/>
-		<mkdir dir="${basedir}/${app.outputfolder}"/>
-	</target>
-	
 	<target name="build-environment">
 		<echo>${ant.version}</echo>
 		<echo>Java ${ant.java.version}</echo>
 		<echo>Flex ${flex.version}.${flex.build}</echo>
 	</target>
 
+	<target name="all" depends="clean" description="Build API docs, run tests and build SWC">
+		<antcall target="api-docs" />
+		<antcall target="build-lib" />
+		<antcall target="test" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${basedir}/${app.outputfolder}" failOnError="false"
+				includeEmptyDirs="true"/>
+		<mkdir dir="${basedir}/${app.outputfolder}"/>
+	</target>
+	
 	<target name="api-docs" description="Generate API documentation">
-		<exec executable="${asdoc.exe}" failonerror="true"
-			  dir="${app.src}">
-			<arg line="-load-config+='${basedir}/${app.config}'"/>
+		<echo>=========================</echo>
+		<echo>=   API DOCUMENTATION   =</echo>
+		<echo>=========================</echo>
+		<antcall target="build-environment" />
+		<delete dir="${basedir}/${app.outputfolder}/api" failOnError="false"
+		                includeEmptyDirs="true"/>
+		<exec executable="${asdoc.exe}" failonerror="true" dir="${app.src}">
+			<arg line="-load-config+=${basedir}/${app.config}"/>
 			<arg value="-load-config+=${basedir}/${docs.config}" />
 			<arg value="-load-config+=${basedir}/${def.config}" />
 			<arg value="-external-library-path" />
@@ -44,14 +54,24 @@
 	</target>
 
 	<target name="build-lib" description="Build SWC library">
+		<echo>=====================</echo>
+		<echo>=   BUILD LIBRARY   =</echo>
+		<echo>=====================</echo>
+		<antcall target="build-environment" />
 		<exec executable="${compc.exe}" failonerror="true">
-			<arg line="-load-config+='${basedir}/${app.config}'"/>
+			<arg line="-load-config+=${basedir}/${app.config}"/>
 			<arg value="-load-config+=${basedir}/${lib.config}" />
 			<arg value="-load-config+=${basedir}/${def.config}" />
 		</exec>
 	</target>
     
-	<target name="test" depends="build-environment, clean" description="Run tests and publish reports">
+	<target name="test" description="Run tests and publish reports">
+		<echo>==================</echo>
+		<echo>=   UNIT TESTS   =</echo>
+		<echo>==================</echo>
+		<antcall target="build-environment" />
+		<delete dir="${app.reports}" failOnError="false"
+				includeEmptyDirs="true"/>
 		<mkdir dir="${app.reports}" />
 		
 		<flexunit workingDir="${app.reports}"
