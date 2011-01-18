@@ -158,8 +158,8 @@ package com.collab.cabin.controls.buttons
 		 * @param font
 		 */		
 		public function LabelButton( width:Number=0, fontSize:int=15,
-									 textUpColor:uint=StyleDict.WHITE,
-									 backgroundColor:uint=StyleDict.BLACK,
+									 textUpColor:uint=0xFFFFFF,
+									 backgroundColor:uint=0x000000,
 									 backgroundAlpha:Number=1,cornerRadius:Number=0,
 									 padding:Number=1, alpha:Number=1,
 									 bold:Boolean=false, font:Font=null )

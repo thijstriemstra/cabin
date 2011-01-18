@@ -48,8 +48,6 @@ Project build file.
 			<arg line="-load-config+=${basedir}/${app.config}"/>
 			<arg value="-load-config+=${basedir}/${docs.config}" />
 			<arg value="-load-config+=${basedir}/${def.config}" />
-			<arg value="-external-library-path" />
-			<arg value="${basedir}/${lib.path}" />
 		</exec>
 	</target>
 
