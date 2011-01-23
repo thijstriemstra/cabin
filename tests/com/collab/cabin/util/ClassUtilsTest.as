@@ -16,18 +16,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-package com.collab.cabin
+package com.collab.cabin.util
 {
-	import com.collab.cabin.util.*;
-
-	[Suite]
-	[RunWith("org.flexunit.runners.Suite")]
-	public class UtilSuite
-	{
-		public var t1	: DateUtilsTest;
-		public var t2   : PathUtilsTest;
-		public var t3   : StringUtilTest;
-		public var t4	: URLUtilsTest;
-		public var t5	: ClassUtilsTest;
+	import org.hamcrest.assertThat;
+	import org.hamcrest.object.equalTo;
+	
+	public class ClassUtilsTest
+	{		
+		[Test]
+		public function testClassName():void
+		{
+			assertThat( ClassUtils.className( this ), equalTo( "ClassUtilsTest" ));
+		}
+		
+		[Test]
+		public function testPackageName():void
+		{
+			assertThat( ClassUtils.packageName( this ), equalTo( "com.collab.cabin.util" ));
+		}
 	}
 }
