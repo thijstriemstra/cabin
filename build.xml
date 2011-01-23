@@ -94,5 +94,15 @@ Project build file.
 	   <move file="${app.reports}/html/junit-noframes.html"
 	  	     tofile="${app.reports}/html/index.html"/>
     </target>
+	
+	<target name="update-manifest" description="Update class manifest">
+    	<echo>===================</echo>
+		<echo>= UPDATE MANIFEST =</echo>
+		<echo>===================</echo>
+		<exec executable="${manifest.exe}" failonerror="true">
+            <arg line="${app.src}"/>
+			<arg value="${lib.manifest}" />
+		</exec>
+	</target>
 
 </project>
