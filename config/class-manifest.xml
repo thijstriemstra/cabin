@@ -1,28 +1,28 @@
-<?xml version="1.0"?>
-
+<?xml version="1.0" ?>
 <componentPackage>
-	<component id="AppContextMenu" class="com.collab.cabin.display.AppContextMenu"/>
-	<component id="CabinEvent" class="com.collab.cabin.events.CabinEvent"/>
-	<component id="CirclePreloader" class="com.collab.cabin.graphics.CirclePreloader"/>
-	<component id="ContentLoader" class="com.collab.cabin.display.util.ContentLoader"/>
-	<component id="DateUtils" class="com.collab.cabin.util.DateUtils"/>
-	<component id="DrawingUtils" class="com.collab.cabin.display.util.DrawingUtils"/>
-	<component id="FlashButton" class="com.collab.cabin.controls.buttons.FlashButton"/>
-	<component id="FlashColorPicker" class="com.collab.cabin.controls.FlashColorPicker"/>
-	<component id="FlashScrollPane" class="com.collab.cabin.containers.scrollpane.FlashScrollPane"/>
-	<component id="LabelButton" class="com.collab.cabin.controls.buttons.LabelButton"/>
-	<component id="Logger" class="com.collab.cabin.log.Logger"/>
-	<component id="Menu" class="com.collab.cabin.controls.Menu"/>
-	<component id="MenuBarItem" class="com.collab.cabin.controls.menu.MenuBarItem"/>
-	<component id="MenuDirection" class="com.collab.cabin.controls.menu.MenuDirection"/>
-	<component id="MenuItem" class="com.collab.cabin.controls.menu.MenuItem"/>
-	<component id="MenuItemClickEvent" class="com.collab.cabin.events.MenuItemClickEvent"/>
-	<component id="Panel" class="com.collab.cabin.containers.panels.Panel"/>
-	<component id="PathUtils" class="com.collab.cabin.util.PathUtils"/>
-	<component id="SkinUtils" class="com.collab.cabin.display.util.SkinUtils"/>
-	<component id="StringUtil" class="com.collab.cabin.util.StringUtil"/>
-	<component id="StyleDict" class="com.collab.cabin.display.util.StyleDict"/>
-	<component id="TextUtils" class="com.collab.cabin.display.util.TextUtils"/>
-	<component id="UIComponent" class="com.collab.cabin.core.UIComponent"/>
-	<component id="URLUtils" class="com.collab.cabin.util.URLUtils"/>
+  <component class="com.collab.cabin.util.DateUtils" id="DateUtils"/>
+  <component class="com.collab.cabin.util.ClassUtils" id="ClassUtils"/>
+  <component class="com.collab.cabin.util.URLUtils" id="URLUtils"/>
+  <component class="com.collab.cabin.util.PathUtils" id="PathUtils"/>
+  <component class="com.collab.cabin.util.StringUtil" id="StringUtil"/>
+  <component class="com.collab.cabin.log.Logger" id="Logger"/>
+  <component class="com.collab.cabin.graphics.CirclePreloader" id="CirclePreloader"/>
+  <component class="com.collab.cabin.controls.FlashColorPicker" id="FlashColorPicker"/>
+  <component class="com.collab.cabin.controls.Menu" id="Menu"/>
+  <component class="com.collab.cabin.controls.buttons.LabelButton" id="LabelButton"/>
+  <component class="com.collab.cabin.controls.buttons.FlashButton" id="FlashButton"/>
+  <component class="com.collab.cabin.controls.menu.MenuDirection" id="MenuDirection"/>
+  <component class="com.collab.cabin.controls.menu.MenuItem" id="MenuItem"/>
+  <component class="com.collab.cabin.controls.menu.MenuBarItem" id="MenuBarItem"/>
+  <component class="com.collab.cabin.containers.scrollpane.FlashScrollPane" id="FlashScrollPane"/>
+  <component class="com.collab.cabin.containers.panels.Panel" id="Panel"/>
+  <component class="com.collab.cabin.events.MenuItemClickEvent" id="MenuItemClickEvent"/>
+  <component class="com.collab.cabin.events.CabinEvent" id="CabinEvent"/>
+  <component class="com.collab.cabin.core.UIComponent" id="UIComponent"/>
+  <component class="com.collab.cabin.display.AppContextMenu" id="AppContextMenu"/>
+  <component class="com.collab.cabin.display.util.DrawingUtils" id="DrawingUtils"/>
+  <component class="com.collab.cabin.display.util.StyleDict" id="StyleDict"/>
+  <component class="com.collab.cabin.display.util.ContentLoader" id="ContentLoader"/>
+  <component class="com.collab.cabin.display.util.TextUtils" id="TextUtils"/>
+  <component class="com.collab.cabin.display.util.SkinUtils" id="SkinUtils"/>
 </componentPackage>

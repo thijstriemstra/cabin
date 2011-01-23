@@ -82,7 +82,7 @@ Project build file.
 	      </testSource>
 	      <library dir="${lib.path}" />
 	   </flexunit>
-	
+
 	   <junitreport todir="${app.reports}">
 			<fileset dir="${app.reports}">
 				<include name="TEST-*.xml" />
@@ -102,6 +102,7 @@ Project build file.
 		<exec executable="${manifest.exe}" failonerror="true">
             <arg line="${app.src}"/>
 			<arg value="${lib.manifest}" />
+			<arg value="--excludes=fl" />
 		</exec>
 	</target>
 
