@@ -18,7 +18,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.containers.scrollpane
 {
-	import com.collab.cabin.log.Logger;
 	import com.collab.cabin.util.ClassUtils;
 	import com.collab.cabin.util.StringUtil;
 	
@@ -80,8 +79,6 @@ package com.collab.cabin.containers.scrollpane
 			
 			_children = [];
 			
-			// XXX: not sure about this clashing
-			//name = getQualifiedClassName( this );
 			scrollDrag = false;
 			horizontalScrollPolicy = ScrollPolicy.ON;
 			verticalScrollPolicy = ScrollPolicy.OFF;
@@ -133,6 +130,7 @@ package com.collab.cabin.containers.scrollpane
 		 * 
 		 * @param child
 		 * @return 		Return true if child was added, otherwise false.
+		 * @see #remove()
 		 */		
 		public function add( child:DisplayObject ):Boolean
 		{
@@ -148,7 +146,8 @@ package com.collab.cabin.containers.scrollpane
 			
 			if ( child )
 			{
-				var msg:String = StringUtil.replace( "Added %s to %s: %s",
+				var msg:String = StringUtil.replace(
+					             "Added child '%s' to '%s': %s",
 					             ClassUtils.className( child ),
 								 ClassUtils.className( this ), result );
 				//Logger.debug( msg );
@@ -174,6 +173,8 @@ package com.collab.cabin.containers.scrollpane
 		 * @param child		Display object.
 		 * @return 			Return true if child was found and removed,
 		 *                  otherwise false.
+		 * @see #add()
+		 * @see #removeAll()
 		 */		
 		public function remove( child:DisplayObject ):Boolean
 		{
@@ -199,7 +200,8 @@ package com.collab.cabin.containers.scrollpane
 			
 			if ( child )
 			{
-				var msg:String = StringUtil.replace( "Removed %s from %s: %s",
+				var msg:String = StringUtil.replace(
+					             "Removed child '%s' from '%s': %s",
 								 ClassUtils.className( child ),
 								 ClassUtils.className( this ), result );
 				//Logger.debug( msg );
@@ -227,6 +229,7 @@ package com.collab.cabin.containers.scrollpane
 		 * 
 		 * @param index
 		 * @return 		Boolean indicating if the item was removed or not.
+		 * @see #remove()
 		 */		
 		public function removeAt( index:int ):Boolean
 		{
@@ -261,6 +264,8 @@ package com.collab.cabin.containers.scrollpane
 		 * trace( pane.children.length ); // 0</listing>
 		 * 
 		 * @return Boolean indicating if the items were removed or not.
+		 * @see #remove()
+		 * @see #removeAt()
 		 */		
 		public function removeAll():Boolean
 		{

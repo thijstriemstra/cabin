@@ -22,6 +22,7 @@ package com.collab.cabin.display.util
 	
 	import flash.text.AntiAliasType;
 	import flash.text.Font;
+	import flash.text.GridFitType;
 	import flash.text.TextField;
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
@@ -103,7 +104,11 @@ package com.collab.cabin.display.util
 			format.leading = leading;
 			format.bold = bold;
 			format.kerning = false;
-			if ( font)
+			if ( font == null )
+			{
+				format.font = "Arial";
+			}
+			else
 			{
 				format.font = font.fontName;
 			}
@@ -166,6 +171,7 @@ package com.collab.cabin.display.util
 			tf.mouseWheelEnabled = false;
 			tf.selectable = false;
 			tf.antiAliasType = AntiAliasType.ADVANCED;
+			tf.gridFitType = GridFitType.PIXEL;
 			tf.defaultTextFormat = format;
 			tf.background = debug;
 			tf.backgroundColor = StyleDict.GREY1;
