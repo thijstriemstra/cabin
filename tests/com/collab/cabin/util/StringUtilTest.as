@@ -48,5 +48,12 @@ package com.collab.cabin.util
 			assertThat( output, emptyString());
 		}
 		
+		[Test]
+		[Ignore]
+		public function testCapitalize():void
+		{
+			// TODO
+		}
+		
 	}
 }

@@ -44,7 +44,7 @@ package com.collab.cabin.util
 		/**
 		 * Replace string using the <code>%s</code> delimiter.
 		 * 
-		 * @example The following code demonstrates replace:
+		 * @example The following code demonstrates this method:
 		 * 
 		 * <listing version="3.0">
 		 * var input:String = "You've finished level %s, %s!";
@@ -83,6 +83,52 @@ package com.collab.cabin.util
 			}
 			
 			return result;
+		}
+		
+		/**
+		 * Turn string into capitalized version.
+		 * 
+		 * @param str
+		 * @param limit How many times the method should be applied to the string. 0 means
+		 *              every first letter of every word preceded by a space, including the
+		 *              first char of the sentence.
+		 * @return      Capatilized string.
+		 */		
+		public static function capitalize( input:String, limit:int=0 ):String
+		{
+			var word:String;
+			var result:String = "";
+			var words:Array = input.split(" ");
+			var cnt:int = 0;
+			
+			if ( words.length > 0 )
+			{
+				for each ( word in words )
+				{
+					if ( limit == 0 || cnt <= limit )
+					{
+						if ( word.length > 1 )
+						{
+							word = word.charAt( 0 ).toUpperCase() +
+								   word.substr( 1 ).toLowerCase();
+						}
+						else
+						{
+							word = word.toUpperCase();
+						}
+						cnt += 1;
+					}
+					result += word + " ";
+				}
+				
+				result = result.substr( 0, result.length - 1 );
+			}
+			else
+			{
+				result = input;
+			}
+			
+			return result; 
 		}
 		
 	}	
