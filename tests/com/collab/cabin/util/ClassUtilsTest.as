@@ -34,5 +34,12 @@ package com.collab.cabin.util
 		{
 			assertThat( ClassUtils.packageName( this ), equalTo( "com.collab.cabin.util" ));
 		}
+		
+		[Test]
+		public function testSplit():void
+		{
+			assertThat( ClassUtils.split( this ), equalTo(
+						["com.collab.cabin.util", "ClassUtilsTest"] ));
+		}
 	}
 }
