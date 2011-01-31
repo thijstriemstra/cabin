@@ -52,8 +52,8 @@ package com.collab.cabin.containers.panels
 		 * @param width
 		 * @param height
 		 */		
-		public function Panel( modal:Boolean=false, width:Number=0, height:Number=0,
-							   offset:Point=null )
+		public function Panel( modal:Boolean=false, width:Number=0,
+							   height:Number=0, offset:Point=null )
 		{
 			super( width, height );
 			
@@ -84,7 +84,8 @@ package com.collab.cabin.containers.panels
 				
 				modalBack = new Shape();
 				modalBack.graphics.beginFill( StyleDict.BLUE1, .2 );
-				modalBack.graphics.drawRect( offset.x - 21, offset.y + 45, parent.width, parent.height );
+				modalBack.graphics.drawRect( offset.x - 21, offset.y + 45,
+											 parent.width, parent.height );
 				modalBack.graphics.endFill();
 				addChild( modalBack );
 			}
