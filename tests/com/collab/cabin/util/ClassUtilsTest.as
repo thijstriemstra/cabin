@@ -41,5 +41,12 @@ package com.collab.cabin.util
 			assertThat( ClassUtils.split( this ), equalTo(
 						["com.collab.cabin.util", "ClassUtilsTest"] ));
 		}
+		
+		[Test]
+		[Ignore]
+		public function testGetQualifiedName():void
+		{
+			// TODO
+		}
 	}
 }

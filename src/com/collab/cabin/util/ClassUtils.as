@@ -32,6 +32,31 @@ package com.collab.cabin.util
 	public class ClassUtils
 	{
 		/**
+		 * Get the qualified class name, eg. 'com.collab.cabin.util.ClassUtils'.
+		 * 
+		 * @example The following code demonstrates how to use this method:
+		 * 
+		 * <listing version="3.0">
+		 * import flash.display.Sprite;
+		 * 
+		 * var className:String = ClassUtils.getQualifiedName( Sprite );
+		 * trace( className ); // flash.display.Sprite</listing>
+		 * 
+		 * @param klass
+		 * @param sep		Optional separator.
+		 * @return 			The qualified name.
+		 * @see #packageName()
+		 * @see #className()
+		 * @see flash.utils.getQualifiedClassName
+		 */	
+		public static function getQualifiedName( klass:Object, sep:String="." ):String
+		{
+			var parts:Array = split( klass );
+			
+			return StringUtil.replace( '%s%s%s', parts[0], sep, parts[1] )
+		}
+		
+		/**
 		 * Get the class name from a getQualifiedClassName call, eg. 'ClassUtils'.
 		 * 
 		 * @example The following code demonstrates how to use this method:
@@ -43,9 +68,9 @@ package com.collab.cabin.util
 		 * trace( className ); // Sprite</listing>
 		 * 
 		 * @param klass
-		 * @return The class name.
+		 * @return 			The class name.
 		 * @see #packageName()
-		 * @see flash.utils.getQualifiedClassName
+		 * @see #getQualifiedName()
 		 */		
 		public static function className( klass:Object ):String
 		{
@@ -76,9 +101,9 @@ package com.collab.cabin.util
 		 * trace( packageName ); // flash.display</listing>
 		 * 
 		 * @param klass
-		 * @return The package name.
+		 * @return 				The package name.
 		 * @see #className()
-		 * @see flash.utils.getQualifiedClassName
+		 * @see #getQualifiedName()
 		 */		
 		public static function packageName( klass:Object ):String
 		{
@@ -109,8 +134,8 @@ package com.collab.cabin.util
 		 * trace( parts ); // flash.display,Sprite</listing>
 		 * 
 		 * @param klass
-		 * @return An array containing 2 elements: the package name and class
-		 *         name.
+		 * @return 			An array containing 2 elements: the package name
+		 *                  and class name.
 		 */		
 		public static function split( klass:Object ):Array
 		{
@@ -131,9 +156,9 @@ package com.collab.cabin.util
 		/**
 		 * Register AMF class alias.
 		 * 
-		 * @param alias	Class alias name.
-		 * @param klass Class to associate with the alias.
-		 * @return The result string.
+		 * @param alias		Class alias name.
+		 * @param klass 	Class to associate with the alias.
+		 * @return 			The result string.
 		 */		
 		public static function registerAlias( alias:String, klass:Class ):String
 		{
