@@ -171,8 +171,9 @@ package com.collab.cabin.containers.scrollpane
 		 * pane.add( shape );
 		 * trace( pane.remove( shape )); // true</listing>
 		 * 
-		 * @param child	Display object.
-		 * @return Return true if child was found and removed, otherwise false.
+		 * @param child		Display object.
+		 * @return 			Return true if child was found and removed,
+		 *                  otherwise false.
 		 */		
 		public function remove( child:DisplayObject ):Boolean
 		{
@@ -218,7 +219,7 @@ package com.collab.cabin.containers.scrollpane
 		 * var shape:Sprite = new Sprite();
 		 * trace( pane.removeAt( 1 )); // false, item doesn't exist
 		 * 
-		 * // add two items
+		 * // add two children
 		 * pane.add( shape );
 		 * pane.add( shape );
 		 * 
@@ -244,7 +245,7 @@ package com.collab.cabin.containers.scrollpane
 		}
 		
 		/**
-		 * Removes all children.
+		 * Remove all children.
 		 * 
 		 * @example The following code shows how to use this method:
 		 * 
@@ -252,7 +253,7 @@ package com.collab.cabin.containers.scrollpane
 		 * var pane:FlashScrollPane = new FlashScrollPane();
 		 * var shape:Sprite = new Sprite();
 		 * 
-		 * // add two items
+		 * // add two children
 		 * pane.add( shape );
 		 * pane.add( shape );
 		 * 
