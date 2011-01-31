@@ -63,9 +63,9 @@ package com.collab.cabin.containers.scrollpane
 		public function testAdd():void
 		{
 			var shape:Sprite = new Sprite();
-			var result:DisplayObject = pane.add( shape );
+			var result:Boolean = pane.add( shape );
 			
-			assertThat( result, equalTo( shape ));
+			assertThat( result, equalTo( true ));
 			assertThat( pane.children, arrayWithSize( 1 ));
 		}
 		

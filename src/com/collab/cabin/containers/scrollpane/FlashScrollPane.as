@@ -18,6 +18,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 package com.collab.cabin.containers.scrollpane
 {
+	import com.collab.cabin.log.Logger;
+	import com.collab.cabin.util.ClassUtils;
+	import com.collab.cabin.util.StringUtil;
+	
 	import fl.containers.ScrollPane;
 	import fl.controls.ScrollBarDirection;
 	import fl.controls.ScrollPolicy;
@@ -27,7 +31,6 @@ package com.collab.cabin.containers.scrollpane
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
-	import flash.utils.getQualifiedClassName;
 	
 	/**
 	 * Custom <code>fl.containers.ScrollPane</code> with a <code>children</code> list.
@@ -50,6 +53,7 @@ package com.collab.cabin.containers.scrollpane
 		// GETTER/SETTER
 		// ====================================
 		
+		[Inspectable(type="Array", defaultValue="[]")]
 		/**
 		 * The panel's children.
 		 * 
@@ -77,7 +81,7 @@ package com.collab.cabin.containers.scrollpane
 			_children = [];
 			
 			// XXX: not sure about this clashing
-			name = getQualifiedClassName( this );
+			//name = getQualifiedClassName( this );
 			scrollDrag = false;
 			horizontalScrollPolicy = ScrollPolicy.ON;
 			verticalScrollPolicy = ScrollPolicy.OFF;
@@ -122,23 +126,35 @@ package com.collab.cabin.containers.scrollpane
 		 * var shape:Sprite = new Sprite();
 		 * 
 		 * // add item
-		 * pane.add( shape );
+		 * var success:Boolean = pane.add( shape );
 		 * 
+		 * trace( success ); // true
 		 * trace( pane.children.length ); // 0</listing>
 		 * 
 		 * @param child
-		 * @return 		The <code>child</code> display object that was added.
+		 * @return 		Return true if child was added, otherwise false.
 		 */		
-		public function add( child:DisplayObject ):DisplayObject
+		public function add( child:DisplayObject ):Boolean
 		{
+			var result:Boolean = false;
+			
 			if ( child && source )
 			{
 				source.addChild( child );
 				_children.push( child );
 				update();
+				result = true;
 			}
 			
-			return child;
+			if ( child )
+			{
+				var msg:String = StringUtil.replace( "Added %s to %s: %s",
+					             ClassUtils.className( child ),
+								 ClassUtils.className( this ), result );
+				//Logger.debug( msg );
+			}
+			
+			return result;
 		}
 		
 		/**
@@ -160,7 +176,7 @@ package com.collab.cabin.containers.scrollpane
 		 */		
 		public function remove( child:DisplayObject ):Boolean
 		{
-			var success:Boolean = false;
+			var result:Boolean = false;
 			
 			if ( child && source && source.contains( child ))
 			{
@@ -176,11 +192,19 @@ package com.collab.cabin.containers.scrollpane
 				}
 				
 				source.removeChild( child );
-				success = true;
+				result = true;
 				update();
 			}
 			
-			return success;
+			if ( child )
+			{
+				var msg:String = StringUtil.replace( "Removed %s from %s: %s",
+								 ClassUtils.className( child ),
+								 ClassUtils.className( this ), result );
+				//Logger.debug( msg );
+			}
+			
+			return result;
 		}
 		
 		/**
@@ -205,18 +229,18 @@ package com.collab.cabin.containers.scrollpane
 		 */		
 		public function removeAt( index:int ):Boolean
 		{
-			var success:Boolean = false;
+			var result:Boolean = false;
 			
 			try
 			{
 				var child:DisplayObject = _children[ index ];
-				success = remove( child );
+				result = remove( child );
 			}
 			catch ( e:Error )
 			{
 			}
 			
-			return success;
+			return result;
 		}
 		
 		/**
@@ -239,7 +263,7 @@ package com.collab.cabin.containers.scrollpane
 		 */		
 		public function removeAll():Boolean
 		{
-			var success:Boolean = false;
+			var result:Boolean = false;
 			
 			if ( _children && _children.length > 0 )
 			{
@@ -252,10 +276,10 @@ package com.collab.cabin.containers.scrollpane
 				}
 				
 				_children = [];
-				success = true;
+				result = true;
 			}
 			
-			return success;
+			return result;
 		}
 		
 		// ====================================
@@ -268,7 +292,7 @@ package com.collab.cabin.containers.scrollpane
 		 */		
 		protected function onLoadComplete( event:Event ):void
 		{
-			trace( "ScrollPane Load complete" );
+			//trace( "ScrollPane Load complete" );
 		}
 		
 		/**
